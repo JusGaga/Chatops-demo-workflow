@@ -2,10 +2,16 @@ require('dotenv').config();
 const { Client, GatewayIntentBits } = require('discord.js');
 const axios = require('axios');
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
+const client = new Client({
+    intents: [
+        GatewayIntentBits.Guilds, // Pour que le bot fonctionne dans les serveurs
+        GatewayIntentBits.GuildMessages, // Pour lire les messages
+        GatewayIntentBits.MessageContent // Pour accéder au contenu des messages (NÉCESSAIRE)
+    ]
+});
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const GITHUB_REPO = "ton-utilisateur/chatops-demo"; // Change par ton repo GitHub
+const GITHUB_REPO = "ton-utilisateur/chatops-demo"; // Remplace par ton repo GitHub
 
 client.once('ready', () => {
     console.log(`✅ Bot connecté en tant que ${client.user.tag}`);
