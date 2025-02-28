@@ -11,7 +11,7 @@ const client = new Client({
 });
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const GITHUB_REPO = "ton-utilisateur/chatops-demo"; // Remplace par ton repo GitHub
+const GITHUB_REPO = "jusgaga/chatops-demo-workflow";
 
 client.once('ready', () => {
     console.log(`✅ Bot connecté en tant que ${client.user.tag}`);
