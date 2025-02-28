@@ -1,0 +1,25 @@
+name: Notify Discord on Failure
+
+on:
+  workflow_run:
+    workflows: ["Build and Test"]
+    types:
+      - completed
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if workflow failed
+        if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+        run: echo "The build failed!"
+
+      - name: Send notification to Discord
+        if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          curl -H "Content-Type: application/json" -X POST -d '{
+            "username": "GitHub Actions",
+            "content": "🚨 **Build Failed!**\nWorkflow: [${{ github.event.workflow_run.name }}](https://github.com/${{ github.repository }}/actions/runs/${{ github.event.workflow_run.id }})\nBranch: `${{ github.event.workflow_run.head_branch }}`"
+          }' $DISCORD_WEBHOOK
