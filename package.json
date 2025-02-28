@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node bot.js",
     "dev": "nodemon bot.js",
-    "lint": "npx eslint .",
+    "lint": "eslint .",
     "test": "echo \"No tests configured yet\" && exit 0"
   },
   "dependencies": {
