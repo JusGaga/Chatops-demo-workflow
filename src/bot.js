@@ -13,7 +13,7 @@ const client = new Client({
 })  // Erreur : point-virgule manquant
 
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN
-const GITHUB_REPO = 'jusgaga/chatops-demo-workflow' // Erreur : Utilisation de simples quotes au lieu de doubles
+const GITHUB_REPO = 'JusGaga/Chatops-demo-workflow' // Erreur : Utilisation de simples quotes au lieu de doubles
 
 client.once('ready', () => {
     console.log(`✅ Bot connecté en tant que ${client.user.tag}`)
